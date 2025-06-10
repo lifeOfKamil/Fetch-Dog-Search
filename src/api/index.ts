@@ -7,8 +7,8 @@ export function login(name: string, email: string) {
 	return api.post("/auth/login", { name, email });
 }
 
-export async function fetchDogs(): Promise<Dog[]> {
-	const response = await api.get<Dog[]>("/dogs/breeds");
+export async function fetchBreeds(): Promise<string[]> {
+	const response = await api.get<string[]>("/dogs/breeds");
 	console.log("Fetched dogs:", response.data);
 	return response.data;
 }
