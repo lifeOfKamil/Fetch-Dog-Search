@@ -1,0 +1,116 @@
+/* Base header styles */
+.navbar {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #ff8c42; /* primary brand color */
+	color: white;
+	position: sticky;
+	z-index: 1000;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.5rem 1rem;
+	background-color: #ff8c42; /* primary brand color */
+	position: relative;
+	z-index: 10;
+}
+
+/* Logo */
+.logo {
+	height: 100%;
+}
+
+.logo a {
+	text-decoration: none;
+	color: white;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+/* Nav - desktop */
+.nav {
+	display: flex;
+}
+.nav__list {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.nav__item + .nav__item {
+	margin-left: 1.5rem;
+}
+.nav__item a {
+	color: white;
+	text-decoration: none;
+	font-size: 1rem;
+}
+
+/* Hamburger - hidden on desktop */
+.hamburger {
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 24px;
+	height: 18px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	margin-right: 1rem;
+}
+.hamburger__line {
+	width: 100%;
+	height: 2px;
+	background: white;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger animation when active */
+.hamburger.is-active .hamburger__line:nth-child(1) {
+	transform: translateY(8px) rotate(45deg);
+}
+.hamburger.is-active .hamburger__line:nth-child(2) {
+	opacity: 0;
+}
+.hamburger.is-active .hamburger__line:nth-child(3) {
+	transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+	/* Hide desktop nav */
+	.nav {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background-color: #ff8c42;
+		flex-direction: column;
+		overflow: hidden;
+		max-height: 0;
+		transition: max-height 0.3s ease;
+	}
+	.nav--open {
+		max-height: 200px; /* enough to show all links */
+	}
+	.nav__list {
+		flex-direction: column;
+	}
+	.nav__item + .nav__item {
+		margin: 0;
+	}
+	.nav__item {
+		padding: 0.75rem 1rem;
+	}
+
+	/* Show hamburger */
+	.hamburger {
+		display: flex;
+	}
+}
