@@ -7,7 +7,7 @@ interface LoginPageProps {
 	onLogin: () => void;
 }
 
-export default function LoginPage({ onLogin }: LoginPageProps) {
+const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const navigate = useNavigate();
@@ -23,9 +23,14 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
 		<div className="login">
 			<h1 className="login__title">Log in</h1>
 			<form onSubmit={onSubmit} className="login__form">
-				<input className="login__input" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
 				<input
-					className="login__input"
+					className="login__input text-light"
+					placeholder="Name"
+					value={name}
+					onChange={(e) => setName(e.target.value)}
+				/>
+				<input
+					className="login__input text-light"
 					type="email"
 					placeholder="Email"
 					value={email}
@@ -35,6 +40,6 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
 			</form>
 		</div>
 	);
-}
+};
 
-export { LoginPage };
+export default LoginPage;
