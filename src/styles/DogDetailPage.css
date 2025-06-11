@@ -1,0 +1,90 @@
+/* Container */
+.dog-detail {
+	padding: 1rem;
+	max-width: 900px;
+	margin: 0 auto;
+	font-family: sans-serif;
+}
+
+/* Back button */
+.dog-detail__back {
+	background: none;
+	border: none;
+	color: #ff8c42;
+	font-size: 1rem;
+	cursor: pointer;
+	margin-bottom: 1rem;
+}
+
+/* Card wrapper */
+.dog-detail__card {
+	display: flex;
+	flex-wrap: wrap;
+	background: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+	overflow: hidden;
+}
+
+/* Image */
+.dog-detail__img {
+	flex: 1 1 320px;
+	max-width: 320px;
+	height: auto;
+	object-fit: cover;
+}
+
+/* Info panel */
+.dog-detail__info {
+	flex: 2 1 400px;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+}
+
+/* Name */
+.dog-detail__name {
+	margin: 0 0 0.5rem;
+	font-size: 1.75rem;
+	color: #222222;
+}
+
+/* Details list */
+.dog-detail__list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.dog-detail__list li {
+	margin: 0.5rem 0;
+	font-size: 1rem;
+	color: #555555;
+}
+.dog-detail__list strong {
+	color: #333333;
+}
+
+/* Loading & error states */
+.dog-detail__loading,
+.dog-detail__error {
+	text-align: center;
+	padding: 2rem;
+	color: #666666;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+	.dog-detail__card {
+		flex-direction: column;
+	}
+	.dog-detail__img {
+		width: 100%;
+		max-width: 100%;
+		height: 240px;
+	}
+	.dog-detail__info {
+		padding: 1rem;
+	}
+}
