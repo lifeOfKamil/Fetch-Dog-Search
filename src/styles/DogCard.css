@@ -1,0 +1,100 @@
+.dog-card {
+	display: flex;
+	flex-direction: row;
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+	cursor: pointer;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Lift on hover */
+.dog-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Selected state outline */
+.dog-card--selected {
+	outline: 2px solid #ff7b6b; /* your accent */
+}
+
+/* Image section */
+.dog-card__img {
+	flex-shrink: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.dog-card__img-wrapper {
+	width: 50%;
+	height: 160px;
+}
+
+/* Info section */
+.dog-card__info {
+	padding: 1rem 0.75rem 1rem 1rem;
+	display: flex;
+	width: 50%;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 0.4rem;
+	position: relative;
+}
+
+/* Dog name */
+.dog-card__name {
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #333333;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.dog-card__heart {
+	font-size: 1.5rem;
+	cursor: pointer;
+
+	&:hover {
+		color: #ff7b6b;
+	}
+}
+
+.dog-card__heart--active {
+	color: #f75e4d;
+}
+
+/* All the details */
+.dog-card__breed,
+.dog-card__age,
+.dog-card__zip {
+	margin: 0;
+	font-size: 0.9rem;
+	color: #666666;
+	line-height: 1.2;
+	text-align: left;
+}
+
+.dog-card__zip {
+	margin-top: 0.75rem;
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-weight: 600;
+
+	svg {
+		color: #b2b2b2;
+	}
+}
+
+.dog-card-link {
+	text-decoration: none;
+	color: inherit;
+}
