@@ -16,7 +16,18 @@ export interface Location {
 	county: string;
 }
 
-export interface Coordinates {
-	lat: number;
-	lon: number;
+export interface DogSearch {
+	resultIds: string[];
+	total: number;
+	next?: string;
+	prev?: string;
+}
+
+export interface Match {
+	match: string;
+}
+
+export interface LocationSearch {
+	results: Location[];
+	total: number;
 }
