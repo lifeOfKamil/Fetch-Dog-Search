@@ -62,7 +62,7 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 			zipCodes: zipCodes.length ? zipCodes : undefined,
 			ageMin: typeof ageMin === "number" ? ageMin : undefined,
 			ageMax: typeof ageMax === "number" ? ageMax : undefined,
-			size,
+			size: typeof size === "number" ? size : undefined,
 			from: from || undefined,
 			sort,
 		};
