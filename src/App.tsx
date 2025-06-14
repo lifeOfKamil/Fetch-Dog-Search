@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import SearchPage from "./pages/SearchPage";
 import DogDetailPage from "./pages/DogDetailPage";
 import FavoriteDogs from "./pages/FavoriteDogs";
+import Match from "./pages/MatchPage";
 import { fetchBreeds } from "./api"; // any protected endpoint works
 import "./App.css";
 
@@ -40,6 +41,9 @@ function App() {
 
 				{/* Favorites route */}
 				<Route path="/favorites" element={isAuth ? <FavoriteDogs /> : <Navigate to="/login" replace />} />
+
+				{/* Match route */}
+				<Route path="/match" element={isAuth ? <Match /> : <Navigate to="/login" replace />} />
 
 				{/* catch-all: send them to wherever makes sense */}
 				<Route path="*" element={isAuth ? <Navigate to="/search" replace /> : <Navigate to="/login" replace />} />
