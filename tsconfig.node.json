@@ -8,7 +8,7 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "composite": false,
+    "composite": true,
     "emitDeclarationOnly": false,
     "verbatimModuleSyntax": false,
     "moduleDetection": "force",
