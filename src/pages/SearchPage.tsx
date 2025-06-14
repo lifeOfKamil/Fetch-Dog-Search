@@ -5,7 +5,6 @@ import { useFavorites } from "../contexts/FavoritesContext";
 import Navbar from "../components/Navbar";
 import DogCard from "../components/DogCard";
 import Pagination from "../components/Pagination";
-import BreedFilter from "../components/BreedFilter";
 import { FaFilter } from "react-icons/fa";
 import { DogSearchFilter } from "../components/DogSearchFilter";
 import "../styles/SearchPage.css";
