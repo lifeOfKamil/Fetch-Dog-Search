@@ -18,6 +18,7 @@ const SearchPage: React.FC = () => {
 	const [showFilter, setShowFilter] = useState(false);
 	const filterRef = useRef<HTMLDivElement>(null);
 	const { favorites, toggleFavorite } = useFavorites();
+	const [loading, setLoading] = useState(true);
 	const perPage = 10;
 
 	// Load all dogs on mount
@@ -27,6 +28,7 @@ const SearchPage: React.FC = () => {
 				console.log("loaded dogs:", allDogs.length);
 				setDogs(allDogs);
 				setFiltered(allDogs);
+				setLoading(false);
 			})
 			.catch(console.error);
 	}, []);
@@ -80,8 +82,8 @@ const SearchPage: React.FC = () => {
 		<div className="search-page text-light">
 			<Navbar />
 			<header className="search-page__controls">
+				{loading && <p>Finding your perfect dog...</p>}
 				<div className="filter-wrapper" ref={filterRef}>
-					{/*<BreedFilter breeds={breeds} value={breedFilter} onChange={setBreedFilter} />*/}
 					<button
 						className="filter-toggle"
 						onClick={() => setShowFilter((v) => !v)}
@@ -95,7 +97,6 @@ const SearchPage: React.FC = () => {
 							<DogSearchFilter onSearch={handleSearch} />
 						</div>
 					)}
-					{/*<button onClick={() => setSortAsc((s) => !s)}>Sort Breed: {sortAsc ? "A→Z" : "Z→A"}</button>*/}
 				</div>
 			</header>
 
