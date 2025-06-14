@@ -13,7 +13,7 @@ interface DogCardProps {
 
 const DogCard: React.FC<DogCardProps> = ({ dog, onSelect, selected }) => {
 	return (
-		<div className="dog-card" onClick={onSelect}>
+		<div className="dog-card">
 			<div className="dog-card__img-wrapper">
 				<img src={dog.img} alt={`Photo of ${dog.name}`} className="dog-card__img" />
 			</div>
