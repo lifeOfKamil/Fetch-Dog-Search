@@ -9,8 +9,14 @@ const Navbar: React.FC = () => {
 		setIsOpen(!isOpen);
 	};
 
-	const handleLogout = () => {
-		logout();
+	const handleLogout = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+		e.preventDefault();
+		try {
+			await logout();
+			window.location.href = "/login";
+		} catch (err) {
+			console.error("Logout error:", err);
+		}
 	};
 
 	return (
