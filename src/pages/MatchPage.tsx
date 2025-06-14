@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useFavorites } from "../contexts/FavoritesContext";
 import { matchDogs, getDogsByIds } from "../api";
 import { Dog } from "../interfaces";
@@ -12,7 +11,6 @@ const MatchPage: React.FC = () => {
 	const [match, setMatch] = useState<Dog | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		fetchMatch();
