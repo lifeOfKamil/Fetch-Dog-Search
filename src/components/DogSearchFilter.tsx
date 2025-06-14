@@ -1,6 +1,5 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { fetchBreeds, searchDogs } from "../api";
-import { DogSearch } from "../interfaces";
+import { fetchBreeds, searchLocations } from "../api";
 import "../styles/DogSearchFilter.css";
 
 export interface DogSearchFilterProps {
@@ -19,9 +18,16 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 	const [allBreeds, setAllBreeds] = useState<string[]>([]);
 	const [breeds, setBreeds] = useState<string[]>([]);
 	const [zipCodesText, setZipCodesText] = useState<string>("");
+
+	const [citySuggestions, setCitySuggestions] = useState<string[]>([]);
+	const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
+
+	const [city, setCity] = useState<string>("");
+	const [state, setState] = useState<string>("");
+
 	const [ageMin, setAgeMin] = useState<number | "">("");
 	const [ageMax, setAgeMax] = useState<number | "">("");
-	const [size, setSize] = useState<number>(25);
+	const [size, setSize] = useState<number | "">("25");
 	const [from, setFrom] = useState<string>("");
 	const [sort, setSort] = useState<string>("breed:asc");
 
@@ -31,10 +37,25 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
-		const zipCodes = zipCodesText
+
+		let zipCodes = zipCodesText
 			.split(/[,\s]+/)
 			.map((z) => z.trim())
 			.filter(Boolean);
+
+		if (city || state) {
+			try {
+				const locationResults = await searchLocations({
+					city: city || undefined,
+					states: state ? [state] : undefined,
+					size: 100,
+				});
+				const locationZips = locationResults.results.map((loc) => loc.zip_code);
+				zipCodes = [...new Set([...zipCodes, ...locationZips])];
+			} catch (err) {
+				console.error("Error fetching lcoations:", err);
+			}
+		}
 
 		const params = {
 			breeds: breeds.length ? breeds : undefined,
@@ -52,6 +73,8 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 	const resetForm = () => {
 		setBreeds([]); // reset selected breeds to empty array
 		setZipCodesText(""); // reset zip codes to empty string
+		setCity("");
+		setState("");
 		setAgeMin(""); // reset age min to empty string
 		setAgeMax(""); // reset age max to empty string
 		setSize(25); // reset size to 25
@@ -67,6 +90,37 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 		setter(selected);
 	};
 
+	const handleCityChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+		const input = e.target.value;
+		setCity(input);
+
+		if (input.length >= 2) {
+			try {
+				const response = await searchLocations({ city: input, size: 10 });
+				console.log("City input:", input);
+				console.log("Full location search response:", response);
+
+				const uniqueCities = Array.from(new Set(response.results.map((loc) => `${loc.city}, ${loc.state}`)));
+				setCitySuggestions(uniqueCities);
+				setShowSuggestions(true);
+				console.log("Suggestions:", uniqueCities);
+			} catch (err) {
+				console.error("Error searching for city:", err);
+				setCitySuggestions([]);
+			}
+		} else {
+			setShowSuggestions(false);
+			setCitySuggestions([]);
+		}
+	};
+
+	const handleCitySelect = (suggestion: string) => {
+		const [selectedCity, selectedState] = suggestion.split(", ");
+		setCity(selectedCity);
+		setState(selectedState);
+		setShowSuggestions(false);
+	};
+
 	return (
 		<form className="dog-search-filter" onSubmit={handleSubmit}>
 			<label className="text-dark">
@@ -75,6 +129,90 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 					{allBreeds.map((b) => (
 						<option key={b} value={b}>
 							{b}
+						</option>
+					))}
+				</select>
+			</label>
+
+			<label className="text-dark" style={{ position: "relative" }}>
+				City:
+				<input
+					type="text"
+					placeholder="e.g. Chicago"
+					value={city}
+					onChange={handleCityChange}
+					onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+					onFocus={() => citySuggestions.length > 0 && setShowSuggestions(true)}
+				/>
+				{showSuggestions && (
+					<ul className="autocomplete-dropdown">
+						{citySuggestions.map((suggestion) => (
+							<li key={suggestion} onClick={() => handleCitySelect(suggestion)}>
+								{suggestion}
+							</li>
+						))}
+					</ul>
+				)}
+			</label>
+
+			<label className="text-dark">
+				State:
+				<select value={state} onChange={(e) => setState(e.target.value)}>
+					<option value="">Select a state</option>
+					{[
+						"AL",
+						"AK",
+						"AZ",
+						"AR",
+						"CA",
+						"CO",
+						"CT",
+						"DE",
+						"FL",
+						"GA",
+						"HI",
+						"ID",
+						"IL",
+						"IN",
+						"IA",
+						"KS",
+						"KY",
+						"LA",
+						"ME",
+						"MD",
+						"MA",
+						"MI",
+						"MN",
+						"MS",
+						"MO",
+						"MT",
+						"NE",
+						"NV",
+						"NH",
+						"NJ",
+						"NM",
+						"NY",
+						"NC",
+						"ND",
+						"OH",
+						"OK",
+						"OR",
+						"PA",
+						"RI",
+						"SC",
+						"SD",
+						"TN",
+						"TX",
+						"UT",
+						"VT",
+						"VA",
+						"WA",
+						"WV",
+						"WI",
+						"WY",
+					].map((st) => (
+						<option key={st} value={st}>
+							{st}
 						</option>
 					))}
 				</select>
@@ -114,7 +252,16 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 			{/* Page size */}
 			<label className="text-dark">
 				Page Size:
-				<input type="number" min={1} max={100} value={size} onChange={(e) => setSize(+e.target.value)} />
+				<input
+					type="number"
+					min={1}
+					max={100}
+					value={size}
+					onChange={(e) => {
+						const val = e.target.value;
+						setSize(val === "" ? "" : Math.max(1, Math.min(100, +val)));
+					}}
+				/>
 			</label>
 
 			{/* Cursor */}
@@ -135,11 +282,12 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 					<option value="age:desc">Age ▼</option>
 				</select>
 			</label>
-
-			<button type="submit">Search Dogs</button>
-			<button type="reset" onClick={resetForm}>
-				Reset
-			</button>
+			<div className="buttons-container">
+				<button type="submit">Search Dogs</button>
+				<button type="reset" onClick={resetForm}>
+					Reset
+				</button>
+			</div>
 		</form>
 	);
 };
