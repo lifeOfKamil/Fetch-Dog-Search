@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useMemo, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { fetchDogs, getDogsByIds, searchDogs } from "../api";
-import { Dog } from "../interfaces";
+import type { Dog } from "../interfaces";
 import { useFavorites } from "../contexts/FavoritesContext";
 import Navbar from "../components/Navbar";
 import DogCard from "../components/DogCard";

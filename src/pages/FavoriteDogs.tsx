@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "../contexts/FavoritesContext";
 import { getDogsByIds } from "../api";
-import { Dog } from "../interfaces";
+import type { Dog } from "../interfaces";
 import { BiCarousel } from "react-icons/bi";
 import { IoGrid } from "react-icons/io5";
 import DogCard from "../components/DogCard";

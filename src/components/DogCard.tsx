@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Dog } from "../interfaces";
+import type { Dog } from "../interfaces";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { useFavorites } from "../contexts/FavoritesContext";
