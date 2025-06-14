@@ -13,7 +13,7 @@
     <a href="https://github.com/lifeOfKamil/Fetch-Dog-Search"><strong>Explore the docs »</strong></a>
     <br/>
     <br/>
-    <a href="https://github.com/lifeOfKamil/Fetch-Dog-Search">View Demo</a>
+    <a href="https://fetch-dog-search-oxd5.onrender.com/">View Demo</a>
     .
     <a href="https://github.com/lifeOfKamil/Fetch-Dog-Search/issues">Report Bug</a>
     .
@@ -36,7 +36,7 @@
 
 ## About The Project
 
-<img src="/src/assets/github_mockup_01.jpg" alt="pupmatch_readme_mockup_laptop" width="1000">
+<img src="/src/assets/mockup_01.jpg" alt="pupmatch_readme_mockup_laptop" width="1000">
 
 PupMatch is a frontend application built for the Fetch take-home assignment. Users can log in, browse dogs, filter by breed and location, and favorite dogs. 
 
@@ -114,11 +114,11 @@ Here are some additional screenshots and mockups:
 - After logging in, users are redirected to ```/search```
 - Dogs can be filtered, paginated, favorited, and matched
 
-<img src="/src/assets/github_mockup_02.jpg" alt="haan_readme_mockup_mobile" width="1000">
+<img src="/src/assets/mockup_02.jpg" alt="haan_readme_mockup_mobile" width="1000">
 
 ## Notes for Reviewers
 
-- The app is deployed here: [live URL]
+- The app is deployed here: [Live Demo](https://fetch-dog-search-oxd5.onrender.com/)
 - All API calls include ```withCredentials: true``` to respect the auth cookie
 - Match is regenerated every time on ```/match```
 - Footer was omitted as it seemed redundant
@@ -163,13 +163,13 @@ I would like to express my gratitude to the following:
 - **React:**
   For providing a powerful and flexible framework to build modern user interfaces.
 
-  - **TypeScript:**
+- **TypeScript:**
   For enabling type safety and improving development reliability.
 
 - **Axios:**
   For simplifying API interactions and supporting authenticated requests with ease.
 
-  - **React Router:**
+- **React Router:**
   For seamless client-side routing and page transitions.
 
 - **Fetch Take-Home API:**
