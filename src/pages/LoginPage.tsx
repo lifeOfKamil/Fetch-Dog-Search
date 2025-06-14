@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../api";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/pupmatch_logo.jpg";
 import "../styles/LoginPage.css";
 
 interface LoginPageProps {
@@ -21,7 +22,9 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 
 	return (
 		<div className="login">
-			<h1 className="login__title">Log in</h1>
+			<h1 className="login__brand">PupMatch</h1>
+			<img src={logo} alt="PupMatch Logo" className="login__logo" />
+			<h2 className="login__title">Log in</h2>
 			<form onSubmit={onSubmit} className="login__form">
 				<input
 					className="login__input text-light"

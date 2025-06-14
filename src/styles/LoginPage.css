@@ -13,6 +13,14 @@
 		line-height: 1.4;
 	}
 
+	.login__brand {
+		color: #ff8c42;
+		font-size: 2rem;
+		line-height: 1.4;
+		position: absolute;
+		top: 9rem;
+	}
+
 	.login__form {
 		display: flex;
 		flex-direction: column;
@@ -42,5 +50,11 @@
 				background-color: #f17223;
 			}
 		}
+	}
+
+	.login__logo {
+		width: 100px;
+		position: absolute;
+		top: 2rem;
 	}
 }
