@@ -8,11 +8,11 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "composite": true,
+    "composite": false,
     "emitDeclarationOnly": false,
     "verbatimModuleSyntax": false,
     "moduleDetection": "force",
-    "noEmit": false,
+    "noEmit": true,
 
     /* Linting */
     "strict": true,
