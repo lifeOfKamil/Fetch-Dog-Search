@@ -27,7 +27,7 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 
 	const [ageMin, setAgeMin] = useState<number | "">("");
 	const [ageMax, setAgeMax] = useState<number | "">("");
-	const [size, setSize] = useState<number | "">(25);
+	const [size, setSize] = useState<number | "">(100);
 	const [from, setFrom] = useState<string>("");
 	const [sort, setSort] = useState<string>("breed:asc");
 
@@ -77,7 +77,7 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 		setState("");
 		setAgeMin(""); // reset age min to empty string
 		setAgeMax(""); // reset age max to empty string
-		setSize(25); // reset size to 25
+		setSize(100); // reset size to 25
 		setFrom(""); // reset from to empty string
 		setSort("breed:asc"); // reset sort to "breed:asc"
 	};
