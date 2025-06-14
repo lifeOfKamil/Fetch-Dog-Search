@@ -27,7 +27,7 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 
 	const [ageMin, setAgeMin] = useState<number | "">("");
 	const [ageMax, setAgeMax] = useState<number | "">("");
-	const [size, setSize] = useState<number | "">("25");
+	const [size, setSize] = useState<number | "">(25);
 	const [from, setFrom] = useState<string>("");
 	const [sort, setSort] = useState<string>("breed:asc");
 
