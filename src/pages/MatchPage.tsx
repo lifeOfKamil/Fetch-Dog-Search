@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "../contexts/FavoritesContext";
 import { matchDogs, getDogsByIds } from "../api";
-import type { Dog } from "../interfaces";
+import { Dog } from "../interfaces";
 import DogCard from "../components/DogCard";
 import Navbar from "../components/Navbar";
 import "../styles/MatchPage.css";

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDogsByIds } from "../api";
-import type { Dog } from "../interfaces";
+import { Dog } from "../interfaces";
 import "../styles/DogDetailPage.css";
 
 const DogDetailPage: React.FC = () => {

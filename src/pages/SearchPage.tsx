@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { fetchDogs, getDogsByIds, searchDogs } from "../api";
-import type { Dog } from "../interfaces";
+import { Dog } from "../interfaces";
 import { useFavorites } from "../contexts/FavoritesContext";
 import Navbar from "../components/Navbar";
 import DogCard from "../components/DogCard";
