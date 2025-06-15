@@ -8,11 +8,12 @@ interface DogCardProps {
 	dog: Dog;
 	selected: boolean;
 	onSelect: () => void;
+	onClickCard: () => void;
 }
 
-const DogCard: React.FC<DogCardProps> = ({ dog, onSelect, selected }) => {
+const DogCard: React.FC<DogCardProps> = ({ dog, onSelect, selected, onClickCard }) => {
 	return (
-		<div className="dog-card">
+		<div className="dog-card" onClick={onClickCard}>
 			<div className="dog-card__img-wrapper">
 				<img src={dog.img} alt={`Photo of ${dog.name}`} className="dog-card__img" />
 			</div>

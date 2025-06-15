@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { fetchDogs, getDogsByIds, searchDogs } from "../api";
+import { useNavigate } from "react-router-dom";
 import { Dog } from "../interfaces";
 import { useFavorites } from "../contexts/FavoritesContext";
 import Navbar from "../components/Navbar";
@@ -20,6 +21,7 @@ const SearchPage: React.FC = () => {
 	const { favorites, toggleFavorite } = useFavorites();
 	const [loading, setLoading] = useState(true);
 	const perPage = 10;
+	const navigate = useNavigate();
 
 	// Load all dogs on mount
 	useEffect(() => {
@@ -107,6 +109,10 @@ const SearchPage: React.FC = () => {
 						dog={dog}
 						selected={favorites.includes(dog.id)}
 						onSelect={() => toggleFavorite(dog.id)}
+						onClickCard={() => {
+							console.log("clicked: ", dog.id);
+							navigate(`/dog/${dog.id}`);
+						}}
 					/>
 				))}
 			</section>
