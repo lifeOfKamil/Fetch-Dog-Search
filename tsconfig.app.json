@@ -10,7 +10,10 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "composite": true,
-    "emitDeclarationOnly": false,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist/types",
     "verbatimModuleSyntax": false,
     "moduleDetection": "force",
     "noEmit": false,
@@ -23,5 +26,6 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
-  }
+  },
+  "include": ["src"]
 }
