@@ -13,7 +13,7 @@
 .filter-wrapper {
 	text-align: left;
 	margin-inline: 1rem;
-	margin-block: 1rem;
+	margin-block: 1.5rem;
 
 	.filter-toggle {
 		display: flex;
