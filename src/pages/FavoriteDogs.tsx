@@ -94,6 +94,7 @@ const FavoriteDogs: React.FC = () => {
 									dog={dogs[currentIndex]}
 									selected={favorites.includes(dogs[currentIndex].id)}
 									onSelect={() => toggleFavorite(dogs[currentIndex].id)}
+									onClickCard={() => navigate(`/dogs/${dogs[currentIndex].id}`)}
 								/>
 								<div className="carousel-controls">
 									<button onClick={goPrev}>⟵ Previous</button>
@@ -107,6 +108,7 @@ const FavoriteDogs: React.FC = () => {
 								dog={dog}
 								selected={favorites.includes(dog.id)}
 								onSelect={() => toggleFavorite(dog.id)}
+								onClickCard={() => navigate(`/dogs/${dog.id}`)}
 							/>
 					  ))}
 			</div>

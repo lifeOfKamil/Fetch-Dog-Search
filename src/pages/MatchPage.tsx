@@ -41,7 +41,7 @@ const MatchPage: React.FC = () => {
 			<div className="match-container">
 				{loading && <p>Finding your perfect dog...</p>}
 				{error && <p>{error}</p>}
-				{match && <DogCard dog={match} selected={true} onSelect={() => {}} />}
+				{match && <DogCard dog={match} selected={true} onSelect={() => {}} onClickCard={() => {}} />}
 			</div>
 			{favorites.length > 0 && (
 				<button className="match-button" onClick={fetchMatch}>
