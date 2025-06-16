@@ -97,13 +97,10 @@ export const DogSearchFilter: React.FC<DogSearchFilterProps> = ({ onSearch }) =>
 		if (input.length >= 2) {
 			try {
 				const response = await searchLocations({ city: input, size: 10 });
-				console.log("City input:", input);
-				console.log("Full location search response:", response);
 
 				const uniqueCities = Array.from(new Set(response.results.map((loc) => `${loc.city}, ${loc.state}`)));
 				setCitySuggestions(uniqueCities);
 				setShowSuggestions(true);
-				console.log("Suggestions:", uniqueCities);
 			} catch (err) {
 				console.error("Error searching for city:", err);
 				setCitySuggestions([]);

@@ -15,7 +15,6 @@ export function logout() {
 // Fetch all dogs
 export async function fetchDogs(size = 100): Promise<Dog[]> {
 	const { resultIds } = await searchDogs({ size, sort: "breed:asc" });
-	console.log("searchDogs result", resultIds);
 
 	if (!resultIds.length) {
 		console.warn("⚠️ no resultIds returned from /dogs/search");
@@ -23,7 +22,6 @@ export async function fetchDogs(size = 100): Promise<Dog[]> {
 	}
 
 	const dogs = await getDogsByIds(resultIds);
-	console.log("getDogsByIds result", dogs);
 	return dogs;
 }
 
@@ -64,14 +62,12 @@ export async function searchDogs(params: {
 
 // Fetch dogs by IDs
 export async function getDogsByIds(ids: string[]): Promise<Dog[]> {
-	console.log("POST /dogs payload:", ids);
 	const response = await api.post<Dog[]>(
 		"/dogs",
 		// ensure this is _exactly_ the array
 		JSON.stringify(ids),
 		{ headers: { "Content-Type": "application/json" } }
 	);
-	console.log("POST /dogs response:", response.data);
 	return response.data;
 }
 

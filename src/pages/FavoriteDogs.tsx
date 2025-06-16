@@ -27,7 +27,6 @@ const FavoriteDogs: React.FC = () => {
 			try {
 				const fetched = await getDogsByIds(favorites);
 				setDogs(fetched);
-				console.log("fetched favorite dogs:", fetched);
 			} catch (err) {
 				console.error(err);
 			} finally {

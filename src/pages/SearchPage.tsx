@@ -27,7 +27,6 @@ const SearchPage: React.FC = () => {
 	useEffect(() => {
 		fetchDogs()
 			.then((allDogs) => {
-				console.log("loaded dogs:", allDogs.length);
 				setDogs(allDogs);
 				setFiltered(allDogs);
 				setLoading(false);
@@ -110,7 +109,6 @@ const SearchPage: React.FC = () => {
 						selected={favorites.includes(dog.id)}
 						onSelect={() => toggleFavorite(dog.id)}
 						onClickCard={() => {
-							console.log("clicked: ", dog.id);
 							navigate(`/dog/${dog.id}`);
 						}}
 					/>
