@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import DogCard from "../components/DogCard";
-import { useFavorites } from "../contexts/FavoritesContext";
 import { getDogsByIds } from "../api";
 import { Dog } from "../interfaces";
 import "../styles/DogDetailPage.css";
@@ -10,7 +8,6 @@ import "../styles/DogDetailPage.css";
 const DogDetailPage: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
 	const navigate = useNavigate();
-	const { favorites, toggleFavorite } = useFavorites();
 	const [dog, setDog] = useState<Dog | null>(null);
 	const [loading, setLoading] = useState(true);
 
